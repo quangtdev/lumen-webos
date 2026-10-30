@@ -1,3 +1,10 @@
 # Extra names blocked on this TV, kept in /etc/hosts by watch.sh (the dashboard rebuilds its own table at boot and would drop hand edits).
-# One name per line as "0.0.0.0 <name>" and ":: <name>"; watch.sh copies nothing else. Empty for now: the old list was JioHotstar's ad hosts
-# from the previous TV. Fill it from a capture of what this TV actually calls.
+# One name per line as "0.0.0.0 <name>" and ":: <name>"; watch.sh copies nothing else. /etc/hosts is read-only on webOS 25, so this only
+# takes effect with 50-debloat, which mounts a writable copy over it at boot.
+# LG's own ad servers (the same three CleanYourTV blocks); nothing else of LG's, so sign-in, the Content Store and updates still work.
+0.0.0.0 eic.ads.lgtvcommon.com
+:: eic.ads.lgtvcommon.com
+0.0.0.0 nl.ad.lgsmartad.com
+:: nl.ad.lgsmartad.com
+0.0.0.0 nl.info.lgsmartad.com
+:: nl.info.lgsmartad.com

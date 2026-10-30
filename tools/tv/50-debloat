@@ -1,0 +1,49 @@
+#!/bin/sh
+# webosbrew boot hook: stops LG's ad, suggestion and log-upload services, and makes /etc/hosts writable so watch.sh can add hosts-extra.
+# Nothing on disk is changed: each program is covered by a do-nothing stub mounted in RAM, and /etc/hosts by a copy in /tmp. A reboot
+# without this file brings everything back. Never blocks boot.
+# Off: rm /var/lib/webosbrew/init.d/50-debloat, then restart the TV. Pause for one boot: touch /var/lib/homehook/no-debloat.
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+DIR=/var/lib/homehook
+LOG=/tmp/homehook.log
+STUB=$DIR/debloat-stub
+# ads (admanager, adoverlay-service), suggestions and nudges (contentminer, nudge, sportsalarm), log uploads (remotelogger, service-logger).
+# The voice app and ThinQ are left alone.
+PROGRAMS="admanager adoverlay-service contentminer nudge sportsalarm remotelogger service-logger"
+# the ones systemd runs; stopped through systemd so it does not count them as failed
+UNITS="contentminer nudge remotelogger service-logger"
+
+[ -f "$DIR/no-debloat" ] && exit 0
+mkdir -p "$DIR"
+
+# exits at once: systemd sees a clean stop (no restart), and ls-hubd sees a dynamic service that never registered
+if [ ! -x "$STUB" ]; then
+  printf '#!/bin/sh\n# do-nothing stand-in for an LG service blocked by 50-debloat\nexit 0\n' > "$STUB"
+  chmod 755 "$STUB"
+fi
+
+stub() {
+  bin=/usr/sbin/$1
+  [ -f "$bin" ] || return 0
+  grep -q " $bin " /proc/mounts && return 0
+  mount --bind "$STUB" "$bin" && echo "$(date +%T) debloat: $1 stubbed" >> "$LOG"
+}
+
+# /etc/hosts lives on the read-only system partition: a copy in RAM that watch.sh can append to
+hosts() {
+  grep -q ' /etc/hosts ' /proc/mounts && return 0
+  cp /etc/hosts /tmp/lumen-hosts && chmod 644 /tmp/lumen-hosts && mount --bind /tmp/lumen-hosts /etc/hosts && echo "$(date +%T) debloat: /etc/hosts writable" >> "$LOG"
+}
+
+run() {
+  for p in $PROGRAMS; do stub "$p"; done
+  hosts
+  for u in $UNITS; do systemctl stop "$u.service" 2>/dev/null; done
+  # the ones started before the stubs were in place
+  for p in $PROGRAMS; do killall "$p" 2>/dev/null; done
+}
+
+run
+# a service that was mid-start during the first pass is caught by this one
+( sleep 90; run ) </dev/null >/dev/null 2>&1 &
+exit 0

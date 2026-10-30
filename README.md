@@ -91,6 +91,16 @@ The last command starts the scripts now. After that, the Homebrew Channel starts
 
 To remove the scripts, run `rm /var/lib/webosbrew/init.d/60-homehook` on the TV, then restart the TV.
 
+Optional: stop LG's ads, suggestions and log uploads, and block LG's ad servers. This also makes `/etc/hosts` writable, which `watch.sh` needs to keep the names in `hosts-extra` blocked on webOS 25:
+
+```sh
+scp tools/tv/hosts-extra root@<tv-ip>:/var/lib/homehook/
+scp tools/tv/50-debloat root@<tv-ip>:/var/lib/webosbrew/init.d/
+ssh root@<tv-ip> 'chmod +x /var/lib/webosbrew/init.d/50-debloat && /var/lib/webosbrew/init.d/50-debloat'
+```
+
+To undo it, run `rm /var/lib/webosbrew/init.d/50-debloat` on the TV, then restart the TV.
+
 ### Open Lumen with the Home button
 
 Use LG Input Hook to map the Home button to the app `com.samrenfrew.lumen`.
@@ -187,6 +197,8 @@ The scripts in [tools/tv/](tools/tv/) run on the TV. They go in `/var/lib/homeho
 
 - [watch.sh](tools/tv/watch.sh) keeps the Recent list, opens Lumen after the TV wakes, starts Lumen hidden after a boot, starts the photo screensaver, and ends LG's screensaver when Settings > Screensaver is Off.
 - [stadia.sh](tools/tv/stadia.sh) pairs a Stadia controller again in Moonlight after a drop, when you hold Stadia + Y.
+- [50-debloat](tools/tv/50-debloat) (optional, in `init.d/`) covers LG's ad, suggestion and log-upload services (`admanager`, `adoverlay-service`, `contentminer`, `nudge`, `sportsalarm`, `remotelogger`, `service-logger`) with a do-nothing stub mounted in RAM, and mounts a writable copy of `/etc/hosts`. The voice app and ThinQ are left alone. Nothing on disk changes.
+- [hosts-extra](tools/tv/hosts-extra) lists the names `watch.sh` keeps blocked in `/etc/hosts`: LG's three ad servers.
 
 LG Input Hook owns the Home button on this TV. `watch.sh` takes over LG Home only when `/var/lib/homehook/home-takeover` exists.
 
