@@ -195,7 +195,7 @@ Do not push only to get a build onto the TV. Use `npm run deploy:home` for that.
 
 The scripts in [tools/tv/](tools/tv/) run on the TV. They go in `/var/lib/homehook/`, and [tools/tv/60-homehook](tools/tv/60-homehook) in `/var/lib/webosbrew/init.d/` starts them at boot.
 
-- [watch.sh](tools/tv/watch.sh) keeps the Recent list, opens Lumen after the TV wakes, starts Lumen hidden after a boot, starts the photo screensaver, and ends LG's screensaver when Settings > Screensaver is Off.
+- [watch.sh](tools/tv/watch.sh) keeps the Recent list, opens Lumen after the TV wakes, starts Lumen hidden after a boot, starts the photo screensaver, and ends LG's screensaver when Settings > Screensaver is Off. With `/var/lib/homehook/night-backlight` holding `<from hour> <to hour> <level>` (for example `21 6 50`), it also lowers the backlight for the night and puts it back in the morning.
 - [stadia.sh](tools/tv/stadia.sh) pairs a Stadia controller again in Moonlight after a drop, when you hold Stadia + Y.
 - [50-debloat](tools/tv/50-debloat) (optional, in `init.d/`) covers LG's ad, suggestion and log-upload services (`admanager`, `adoverlay-service`, `contentminer`, `nudge`, `sportsalarm`, `remotelogger`, `service-logger`) with a do-nothing stub mounted in RAM, and mounts a writable copy of `/etc/hosts`. The voice app and ThinQ are left alone. Nothing on disk changes.
 - [hosts-extra](tools/tv/hosts-extra) lists the names `watch.sh` keeps blocked in `/etc/hosts`: LG's three ad servers.

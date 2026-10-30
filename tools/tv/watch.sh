@@ -17,6 +17,9 @@
 #    opens Lumen with {"view":"ambient"} (your Immich photos) and ends LG's screensaver. The video wallpaper, when on and in front, wins.
 #  - When the TV's power state becomes "Screen Saver" (LG's screensaver is not a foreground app, so the power state is what shows it) and
 #    /var/lib/homehook/frame-screensaver exists: opens Frame in screensaver mode, then ends LG's screensaver (turnOnScreen) so Frame is what shows.
+#  - Night backlight, only with /var/lib/homehook/night-backlight holding "<from hour> <to hour> <level>" (for example "21 6 50"): when the night
+#    starts, notes the backlight and lowers it to <level> (never raises it); when it ends, puts the noted level back. Checked about once a
+#    minute and after a wake, so a TV switched on in the night or the morning catches up.
 # Never spins: reacts only when the app changes, and at most once every 3 s. Does nothing if the app is not installed.
 # ME lists every Lumen build (stable, dev). Home opens the one that was last in front, or the first installed one in this list. The flag files in
 # /var/lib/homehook/ are shared by all of them, which is fine while only one is in front at a time.
@@ -37,6 +40,8 @@ WAKE_SECS=30
 WAKE_SETTLE=3
 NOPRELOAD_FLAG=/var/lib/homehook/no-boot-preload
 RECENT=/var/lib/homehook/recent
+NIGHTBL=/var/lib/homehook/night-backlight
+NIGHTBL_SAVED=/var/lib/homehook/night-backlight.saved
 prev=""
 prevapp=""
 last=0
@@ -78,6 +83,40 @@ wake_open() {
   ( r=$(luna-send -n 1 luna://com.webos.applicationManager/launch "{\"id\":\"$target\"}" </dev/null 2>&1)
     echo "$(date +%T) wake: open $target over ${1:-nothing}: $r" >> /tmp/homehook.log ) &
   launchpid=$!
+}
+
+# the backlight of the picture mode in use
+backlight_get() {
+  luna-send -n 1 luna://com.webos.settingsservice/getSystemSettings '{"category":"picture","keys":["backlight"]}' </dev/null 2>/dev/null \
+    | sed -n 's/.*"backlight": *"\([0-9]*\)".*/\1/p'
+}
+backlight_set() {
+  luna-send -n 1 luna://com.webos.settingsservice/setSystemSettings "{\"category\":\"picture\",\"settings\":{\"backlight\":\"$1\"}}" </dev/null >/dev/null 2>&1
+}
+
+# lowers the backlight for the night and puts it back in the morning (see the top); does nothing without $NIGHTBL
+night_backlight() {
+  [ -f "$NIGHTBL" ] || return
+  set -- $(grep -E '^[0-9]{1,2} [0-9]{1,2} [0-9]{1,3}$' "$NIGHTBL" | head -1)
+  [ $# -eq 3 ] || return
+  hour=$(date +%H); hour=${hour#0}
+  if [ "$1" -gt "$2" ]; then
+    { [ "$hour" -ge "$1" ] || [ "$hour" -lt "$2" ]; } && night=1 || night=0
+  else
+    { [ "$hour" -ge "$1" ] && [ "$hour" -lt "$2" ]; } && night=1 || night=0
+  fi
+  if [ "$night" -eq 1 ] && [ ! -f "$NIGHTBL_SAVED" ]; then
+    cur=$(backlight_get)
+    [ -n "$cur" ] || return
+    echo "$cur" > "$NIGHTBL_SAVED"
+    [ "$cur" -gt "$3" ] && backlight_set "$3"
+    echo "$(date +%T) night backlight: $cur -> $3" >> /tmp/homehook.log
+  elif [ "$night" -eq 0 ] && [ -f "$NIGHTBL_SAVED" ]; then
+    day=$(grep -E '^[0-9]{1,3}$' "$NIGHTBL_SAVED")
+    [ -n "$day" ] && backlight_set "$day"
+    rm -f "$NIGHTBL_SAVED"
+    echo "$(date +%T) day backlight: back to $day" >> /tmp/homehook.log
+  fi
 }
 
 while true; do
@@ -203,6 +242,8 @@ while true; do
       ! grep -qF "$l" /etc/hosts 2>/dev/null && echo "$l" >> /etc/hosts
     done
   fi
+  # night backlight: about once a minute, and right after a wake
+  if [ $((ticks % 60)) -eq 2 ] || [ "$woke" -eq 1 ]; then night_backlight; fi
   # faster ticks while a wake is open, so Lumen goes up as soon as the TV lets it
   if [ "$now" -lt "$wakeuntil" ]; then sleep 0.5; else sleep 1; fi
 done
