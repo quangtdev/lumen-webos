@@ -1,4 +1,4 @@
-// Short UI labels in nine languages. Missing entries fall back to the English text, so anything not listed (folder names, app names,
+// Short UI labels in ten languages. Missing entries fall back to the English text, so anything not listed (folder names, app names,
 // the long option descriptions) is shown as written.
 
 export const LANGS = [
@@ -10,27 +10,28 @@ export const LANGS = [
 	{code: 'pt', name: 'Português', locale: 'pt-PT'},
 	{code: 'nl', name: 'Nederlands', locale: 'nl-NL'},
 	{code: 'tr', name: 'Türkçe', locale: 'tr-TR'},
-	{code: 'hi', name: 'हिन्दी', locale: 'hi-IN'}
+	{code: 'hi', name: 'हिन्दी', locale: 'hi-IN'},
+	{code: 'vi', name: 'Tiếng Việt', locale: 'vi-VN'}
 ];
-const ORDER = ["de", "es", "fr", "it", "pt", "nl", "tr", "hi"];
+const ORDER = ["de", "es", "fr", "it", "pt", "nl", "tr", "hi", "vi"];
 const TABLE: Record<string, string[]> = {
-	"Home Screen": ["Startbildschirm", "Pantalla de inicio", "Écran d'accueil", "Schermata Home", "Ecrã principal", "Startscherm", "Ana ekran", "होम स्क्रीन"],
-	"Weather": ["Wetter", "Tiempo", "Météo", "Meteo", "Tempo", "Weer", "Hava durumu", "मौसम"],
-	"Language and Clock": ["Sprache und Uhr", "Idioma y reloj", "Langue et horloge", "Lingua e orologio", "Idioma e relógio", "Taal en klok", "Dil ve saat", "भाषा और घड़ी"],
-	"Language and Region": ["Sprache und Region", "Idioma y región", "Langue et région", "Lingua e regione", "Idioma e região", "Taal en regio", "Dil ve bölge", "भाषा और क्षेत्र"],
-	"Photos": ["Fotos", "Fotos", "Photos", "Foto", "Fotos", "Foto's", "Fotoğraflar", "फ़ोटो"],
-	"System": ["System", "Sistema", "Système", "Sistema", "Sistema", "Systeem", "Sistem", "सिस्टम"],
-	"Choose wallpaper": ["Hintergrund wählen", "Elegir fondo", "Choisir le fond d'écran", "Scegli sfondo", "Escolher fundo", "Achtergrond kiezen", "Duvar kağıdı seç", "वॉलपेपर चुनें"],
-	"Channels": ["Sender", "Canales", "Chaînes", "Canali", "Canais", "Zenders", "Kanallar", "चैनल"],
-	"Appearance": ["Darstellung", "Apariencia", "Apparence", "Aspetto", "Aspeto", "Weergave", "Görünüm", "दिखावट"],
-	"Light": ["Hell", "Claro", "Clair", "Chiaro", "Claro", "Licht", "Açık", "लाइट"],
-	"Dark": ["Dunkel", "Oscuro", "Sombre", "Scuro", "Escuro", "Donker", "Koyu", "डार्क"],
-	"Weather country": ["Wetter-Land", "País del tiempo", "Pays météo", "Paese meteo", "País do tempo", "Weerland", "Hava durumu ülkesi", "मौसम देश"],
-	"Hide the dock": ["Dock ausblenden", "Ocultar el dock", "Masquer le dock", "Nascondi il dock", "Ocultar o dock", "Dock verbergen", "Dock'u gizle", "डॉक छिपाएं"],
-	"Video clip": ["Videoclip", "Clip de vídeo", "Clip vidéo", "Clip video", "Clip de vídeo", "Videoclip", "Video klibi", "वीडियो क्लिप"],
-	"Shuffle": ["Zufall", "Aleatorio", "Aléatoire", "Casuale", "Aleatório", "Willekeurig", "Karışık", "शफल"],
-	"On": ["Ein", "Activado", "Activé", "Attivo", "Ligado", "Aan", "Açık", "चालू"],
-	"Dark mode": ["Dunkelmodus", "Modo oscuro", "Mode sombre", "Modalità scura", "Modo escuro", "Donkere modus", "Karanlık mod", "डार्क मोड"],
+	"Home Screen": ["Startbildschirm", "Pantalla de inicio", "Écran d'accueil", "Schermata Home", "Ecrã principal", "Startscherm", "Ana ekran", "होम स्क्रीन", "Màn hình chính"],
+	"Weather": ["Wetter", "Tiempo", "Météo", "Meteo", "Tempo", "Weer", "Hava durumu", "मौसम", "Thời tiết"],
+	"Language and Clock": ["Sprache und Uhr", "Idioma y reloj", "Langue et horloge", "Lingua e orologio", "Idioma e relógio", "Taal en klok", "Dil ve saat", "भाषा और घड़ी", "Ngôn ngữ và đồng hồ"],
+	"Language and Region": ["Sprache und Region", "Idioma y región", "Langue et région", "Lingua e regione", "Idioma e região", "Taal en regio", "Dil ve bölge", "भाषा और क्षेत्र", "Ngôn ngữ và khu vực"],
+	"Photos": ["Fotos", "Fotos", "Photos", "Foto", "Fotos", "Foto's", "Fotoğraflar", "फ़ोटो", "Ảnh"],
+	"System": ["System", "Sistema", "Système", "Sistema", "Sistema", "Systeem", "Sistem", "सिस्टम", "Hệ thống"],
+	"Choose wallpaper": ["Hintergrund wählen", "Elegir fondo", "Choisir le fond d'écran", "Scegli sfondo", "Escolher fundo", "Achtergrond kiezen", "Duvar kağıdı seç", "वॉलपेपर चुनें", "Chọn hình nền"],
+	"Channels": ["Sender", "Canales", "Chaînes", "Canali", "Canais", "Zenders", "Kanallar", "चैनल", "Kênh"],
+	"Appearance": ["Darstellung", "Apariencia", "Apparence", "Aspetto", "Aspeto", "Weergave", "Görünüm", "दिखावट", "Giao diện"],
+	"Light": ["Hell", "Claro", "Clair", "Chiaro", "Claro", "Licht", "Açık", "लाइट", "Sáng"],
+	"Dark": ["Dunkel", "Oscuro", "Sombre", "Scuro", "Escuro", "Donker", "Koyu", "डार्क", "Tối"],
+	"Weather country": ["Wetter-Land", "País del tiempo", "Pays météo", "Paese meteo", "País do tempo", "Weerland", "Hava durumu ülkesi", "मौसम देश", "Quốc gia thời tiết"],
+	"Hide the dock": ["Dock ausblenden", "Ocultar el dock", "Masquer le dock", "Nascondi il dock", "Ocultar o dock", "Dock verbergen", "Dock'u gizle", "डॉक छिपाएं", "Ẩn thanh dock"],
+	"Video clip": ["Videoclip", "Clip de vídeo", "Clip vidéo", "Clip video", "Clip de vídeo", "Videoclip", "Video klibi", "वीडियो क्लिप", "Video"],
+	"Shuffle": ["Zufall", "Aleatorio", "Aléatoire", "Casuale", "Aleatório", "Willekeurig", "Karışık", "शफल", "Ngẫu nhiên"],
+	"On": ["Ein", "Activado", "Activé", "Attivo", "Ligado", "Aan", "Açık", "चालू", "Bật"],
+	"Dark mode": ["Dunkelmodus", "Modo oscuro", "Mode sombre", "Modalità scura", "Modo escuro", "Donkere modus", "Karanlık mod", "डार्क मोड", "Chế độ tối"],
 	"Apps": [
 		"Apps",
 		"Apps",
@@ -39,7 +40,8 @@ const TABLE: Record<string, string[]> = {
 		"Apps",
 		"Apps",
 		"Uygulamalar",
-		"ऐप्स"
+		"ऐप्स",
+		"Ứng dụng"
 	],
 	"More apps": [
 		"Weitere Apps",
@@ -49,7 +51,8 @@ const TABLE: Record<string, string[]> = {
 		"Mais apps",
 		"Meer apps",
 		"Daha fazla uygulama",
-		"और ऐप्स"
+		"और ऐप्स",
+		"Thêm ứng dụng"
 	],
 	"Recent": [
 		"Zuletzt",
@@ -59,7 +62,8 @@ const TABLE: Record<string, string[]> = {
 		"Recentes",
 		"Recent",
 		"Son kullanılanlar",
-		"हाल के"
+		"हाल के",
+		"Gần đây"
 	],
 	"Sources": [
 		"Quellen",
@@ -69,7 +73,8 @@ const TABLE: Record<string, string[]> = {
 		"Fontes",
 		"Bronnen",
 		"Kaynaklar",
-		"स्रोत"
+		"स्रोत",
+		"Nguồn"
 	],
 	"Inputs": [
 		"Eingänge",
@@ -79,7 +84,8 @@ const TABLE: Record<string, string[]> = {
 		"Entradas",
 		"Ingangen",
 		"Girişler",
-		"इनपुट"
+		"इनपुट",
+		"Đầu vào"
 	],
 	"Control Center": [
 		"Kontrollzentrum",
@@ -89,7 +95,8 @@ const TABLE: Record<string, string[]> = {
 		"Central de controlo",
 		"Bedieningscentrum",
 		"Denetim Merkezi",
-		"कंट्रोल सेंटर"
+		"कंट्रोल सेंटर",
+		"Trung tâm điều khiển"
 	],
 	"Quick Controls": [
 		"Schnellsteuerung",
@@ -99,7 +106,8 @@ const TABLE: Record<string, string[]> = {
 		"Controlos rápidos",
 		"Snelbediening",
 		"Hızlı Kontroller",
-		"त्वरित नियंत्रण"
+		"त्वरित नियंत्रण",
+		"Điều khiển nhanh"
 	],
 	"Settings": [
 		"Einstellungen",
@@ -109,7 +117,8 @@ const TABLE: Record<string, string[]> = {
 		"Definições",
 		"Instellingen",
 		"Ayarlar",
-		"सेटिंग्स"
+		"सेटिंग्स",
+		"Cài đặt"
 	],
 	"Start Screensaver": [
 		"Bildschirmschoner starten",
@@ -119,7 +128,8 @@ const TABLE: Record<string, string[]> = {
 		"Iniciar protetor de ecrã",
 		"Schermbeveiliging starten",
 		"Ekran koruyucuyu başlat",
-		"स्क्रीनसेवर शुरू करें"
+		"स्क्रीनसेवर शुरू करें",
+		"Bật bảo vệ màn hình"
 	],
 	"No apps selected — add some in Settings": [
 		"Keine Apps ausgewählt – in den Einstellungen hinzufügen",
@@ -129,7 +139,8 @@ const TABLE: Record<string, string[]> = {
 		"Nenhuma app: adicione nas Definições",
 		"Geen apps: voeg ze toe in Instellingen",
 		"Uygulama yok — Ayarlar'dan ekleyin",
-		"कोई ऐप नहीं — सेटिंग्स में जोड़ें"
+		"कोई ऐप नहीं — सेटिंग्स में जोड़ें",
+		"Chưa chọn ứng dụng nào — thêm trong Cài đặt"
 	],
 	"Wallpaper": [
 		"Hintergrund",
@@ -139,7 +150,8 @@ const TABLE: Record<string, string[]> = {
 		"Papel de parede",
 		"Achtergrond",
 		"Duvar kâğıdı",
-		"वॉलपेपर"
+		"वॉलपेपर",
+		"Hình nền"
 	],
 	"Options": [
 		"Optionen",
@@ -149,7 +161,8 @@ const TABLE: Record<string, string[]> = {
 		"Opções",
 		"Opties",
 		"Seçenekler",
-		"विकल्प"
+		"विकल्प",
+		"Tùy chọn"
 	],
 	"Done": [
 		"Fertig",
@@ -159,7 +172,8 @@ const TABLE: Record<string, string[]> = {
 		"Concluído",
 		"Klaar",
 		"Bitti",
-		"हो गया"
+		"हो गया",
+		"Xong"
 	],
 	"Re-order apps": [
 		"Apps anordnen",
@@ -169,7 +183,8 @@ const TABLE: Record<string, string[]> = {
 		"Reordenar apps",
 		"Apps herschikken",
 		"Uygulamaları sırala",
-		"ऐप्स क्रमबद्ध करें"
+		"ऐप्स क्रमबद्ध करें",
+		"Sắp xếp ứng dụng"
 	],
 	"Re-order sources": [
 		"Quellen anordnen",
@@ -179,7 +194,8 @@ const TABLE: Record<string, string[]> = {
 		"Reordenar fontes",
 		"Bronnen herschikken",
 		"Kaynakları sırala",
-		"स्रोत क्रमबद्ध करें"
+		"स्रोत क्रमबद्ध करें",
+		"Sắp xếp nguồn"
 	],
 	"Nothing on the home screen yet.": [
 		"Noch nichts auf dem Startbildschirm.",
@@ -189,7 +205,8 @@ const TABLE: Record<string, string[]> = {
 		"Ainda nada no ecrã inicial.",
 		"Nog niets op het startscherm.",
 		"Ana ekranda henüz bir şey yok.",
-		"होम स्क्रीन पर अभी कुछ नहीं है।"
+		"होम स्क्रीन पर अभी कुछ नहीं है।",
+		"Màn hình chính chưa có gì."
 	],
 	"Move with the arrows · OK to drop · Hold OK for more": [
 		"Mit Pfeilen verschieben · OK zum Ablegen · OK halten für mehr",
@@ -199,12 +216,13 @@ const TABLE: Record<string, string[]> = {
 		"Mova com as setas · OK para soltar · Mantenha OK para mais",
 		"Verplaats met de pijlen · OK om neer te zetten · Houd OK vast voor meer",
 		"Oklarla taşı · Bırakmak için OK · Daha fazlası için OK'a basılı tut",
-		"तीरों से खिसकाएं · छोड़ने के लिए OK · और विकल्पों के लिए OK दबाए रखें"
+		"तीरों से खिसकाएं · छोड़ने के लिए OK · और विकल्पों के लिए OK दबाए रखें",
+		"Di chuyển bằng mũi tên · OK để thả · Giữ OK để xem thêm"
 	],
-	"Uninstall App": ["App deinstallieren", "Desinstalar app", "Désinstaller l'app", "Disinstalla app", "Desinstalar app", "App verwijderen", "Uygulamayı kaldır", "ऐप अनइंस्टॉल करें"],
-	"Press OK again to uninstall": ["Zum Deinstallieren erneut OK", "Pulsa OK otra vez para desinstalar", "Appuyez à nouveau sur OK pour désinstaller", "Premi di nuovo OK per disinstallare", "Prima OK de novo para desinstalar", "Druk nogmaals op OK om te verwijderen", "Kaldırmak için tekrar OK'a bas", "अनइंस्टॉल करने के लिए फिर OK दबाएं"],
-	"Remove from Home Screen": ["Vom Startbildschirm entfernen", "Quitar de la pantalla de inicio", "Retirer de l'écran d'accueil", "Rimuovi dalla schermata Home", "Remover do ecrã inicial", "Van startscherm verwijderen", "Ana ekrandan kaldır", "होम स्क्रीन से हटाएं"],
-	"Add to Folder": ["Zu Ordner hinzufügen", "Añadir a carpeta", "Ajouter à un dossier", "Aggiungi a cartella", "Adicionar a pasta", "Aan map toevoegen", "Klasöre ekle", "फ़ोल्डर में जोड़ें"],
+	"Uninstall App": ["App deinstallieren", "Desinstalar app", "Désinstaller l'app", "Disinstalla app", "Desinstalar app", "App verwijderen", "Uygulamayı kaldır", "ऐप अनइंस्टॉल करें", "Gỡ ứng dụng"],
+	"Press OK again to uninstall": ["Zum Deinstallieren erneut OK", "Pulsa OK otra vez para desinstalar", "Appuyez à nouveau sur OK pour désinstaller", "Premi di nuovo OK per disinstallare", "Prima OK de novo para desinstalar", "Druk nogmaals op OK om te verwijderen", "Kaldırmak için tekrar OK'a bas", "अनइंस्टॉल करने के लिए फिर OK दबाएं", "Nhấn OK lần nữa để gỡ"],
+	"Remove from Home Screen": ["Vom Startbildschirm entfernen", "Quitar de la pantalla de inicio", "Retirer de l'écran d'accueil", "Rimuovi dalla schermata Home", "Remover do ecrã inicial", "Van startscherm verwijderen", "Ana ekrandan kaldır", "होम स्क्रीन से हटाएं", "Xóa khỏi màn hình chính"],
+	"Add to Folder": ["Zu Ordner hinzufügen", "Añadir a carpeta", "Ajouter à un dossier", "Aggiungi a cartella", "Adicionar a pasta", "Aan map toevoegen", "Klasöre ekle", "फ़ोल्डर में जोड़ें", "Thêm vào thư mục"],
 	"Add to Games": [
 		"Zu Spiele hinzufügen",
 		"Añadir a Juegos",
@@ -213,7 +231,8 @@ const TABLE: Record<string, string[]> = {
 		"Adicionar a Jogos",
 		"Toevoegen aan Games",
 		"Oyunlar'a ekle",
-		"गेम्स में जोड़ें"
+		"गेम्स में जोड़ें",
+		"Thêm vào Games"
 	],
 	"Add to Tools": [
 		"Zu Tools hinzufügen",
@@ -223,7 +242,8 @@ const TABLE: Record<string, string[]> = {
 		"Adicionar a Ferramentas",
 		"Toevoegen aan Tools",
 		"Araçlar'a ekle",
-		"टूल्स में जोड़ें"
+		"टूल्स में जोड़ें",
+		"Thêm vào Tools"
 	],
 	"Add to Media": [
 		"Zu Medien hinzufügen",
@@ -233,7 +253,8 @@ const TABLE: Record<string, string[]> = {
 		"Adicionar a Multimédia",
 		"Toevoegen aan Media",
 		"Medya'ya ekle",
-		"मीडिया में जोड़ें"
+		"मीडिया में जोड़ें",
+		"Thêm vào Media"
 	],
 	"Take out of Folder": [
 		"Aus Ordner nehmen",
@@ -243,7 +264,8 @@ const TABLE: Record<string, string[]> = {
 		"Tirar da pasta",
 		"Uit map halen",
 		"Klasörden çıkar",
-		"फ़ोल्डर से निकालें"
+		"फ़ोल्डर से निकालें",
+		"Lấy ra khỏi thư mục"
 	],
 	"Sound mode": [
 		"Klangmodus",
@@ -253,7 +275,8 @@ const TABLE: Record<string, string[]> = {
 		"Modo de som",
 		"Geluidsmodus",
 		"Ses modu",
-		"साउंड मोड"
+		"साउंड मोड",
+		"Chế độ âm thanh"
 	],
 	"Picture": [
 		"Bild",
@@ -263,7 +286,8 @@ const TABLE: Record<string, string[]> = {
 		"Imagem",
 		"Beeld",
 		"Resim",
-		"चित्र"
+		"चित्र",
+		"Hình ảnh"
 	],
 	"Sleep timer": [
 		"Sleep-Timer",
@@ -273,7 +297,8 @@ const TABLE: Record<string, string[]> = {
 		"Temporizador",
 		"Slaaptimer",
 		"Uyku zamanlayıcı",
-		"स्लीप टाइमर"
+		"स्लीप टाइमर",
+		"Hẹn giờ tắt"
 	],
 	"Screensaver": [
 		"Bildschirmschoner",
@@ -283,7 +308,8 @@ const TABLE: Record<string, string[]> = {
 		"Protetor de ecrã",
 		"Schermbeveiliging",
 		"Ekran koruyucu",
-		"स्क्रीनसेवर"
+		"स्क्रीनसेवर",
+		"Bảo vệ màn hình"
 	],
 	"Art mode": [
 		"Kunstmodus",
@@ -293,7 +319,8 @@ const TABLE: Record<string, string[]> = {
 		"Modo arte",
 		"Kunstmodus",
 		"Sanat modu",
-		"आर्ट मोड"
+		"आर्ट मोड",
+		"Chế độ tranh"
 	],
 	"Start now": [
 		"Jetzt starten",
@@ -303,7 +330,8 @@ const TABLE: Record<string, string[]> = {
 		"Iniciar agora",
 		"Nu starten",
 		"Şimdi başlat",
-		"अभी शुरू करें"
+		"अभी शुरू करें",
+		"Bắt đầu ngay"
 	],
 	"Screen off": [
 		"Bildschirm aus",
@@ -313,7 +341,8 @@ const TABLE: Record<string, string[]> = {
 		"Ecrã desligado",
 		"Scherm uit",
 		"Ekranı kapat",
-		"स्क्रीन बंद"
+		"स्क्रीन बंद",
+		"Tắt màn hình"
 	],
 	"Restart": [
 		"Neustart",
@@ -323,7 +352,8 @@ const TABLE: Record<string, string[]> = {
 		"Reiniciar",
 		"Herstarten",
 		"Yeniden başlat",
-		"रीस्टार्ट"
+		"रीस्टार्ट",
+		"Khởi động lại"
 	],
 	"Press OK again": [
 		"OK erneut drücken",
@@ -333,10 +363,11 @@ const TABLE: Record<string, string[]> = {
 		"Prima OK novamente",
 		"Druk nogmaals OK",
 		"Tekrar OK'a basın",
-		"फिर OK दबाएं"
+		"फिर OK दबाएं",
+		"Nhấn OK lần nữa"
 	],
-	"Backlight": ["Hintergrundbeleuchtung", "Luz de fondo", "Rétroéclairage", "Retroilluminazione", "Retroiluminação", "Achtergrondverlichting", "Arka ışık", "बैकलाइट"],
-	"Eye Comfort": ["Augenkomfort", "Confort visual", "Confort visuel", "Comfort visivo", "Conforto visual", "Oogcomfort", "Göz konforu", "आई कम्फर्ट"],
+	"Backlight": ["Hintergrundbeleuchtung", "Luz de fondo", "Rétroéclairage", "Retroilluminazione", "Retroiluminação", "Achtergrondverlichting", "Arka ışık", "बैकलाइट", "Đèn nền"],
+	"Eye Comfort": ["Augenkomfort", "Confort visual", "Confort visuel", "Comfort visivo", "Conforto visual", "Oogcomfort", "Göz konforu", "आई कम्फर्ट", "Bảo vệ mắt"],
 	"Volume": [
 		"Lautstärke",
 		"Volumen",
@@ -345,7 +376,8 @@ const TABLE: Record<string, string[]> = {
 		"Volume",
 		"Volume",
 		"Ses",
-		"वॉल्यूम"
+		"वॉल्यूम",
+		"Âm lượng"
 	],
 	"Muted": [
 		"Stumm",
@@ -355,7 +387,8 @@ const TABLE: Record<string, string[]> = {
 		"Sem som",
 		"Gedempt",
 		"Sessiz",
-		"म्यूट"
+		"म्यूट",
+		"Tắt tiếng"
 	],
 	"Off": [
 		"Aus",
@@ -365,7 +398,8 @@ const TABLE: Record<string, string[]> = {
 		"Desligado",
 		"Uit",
 		"Kapalı",
-		"बंद"
+		"बंद",
+		"Tắt"
 	],
 	"Offline": [
 		"Offline",
@@ -375,7 +409,8 @@ const TABLE: Record<string, string[]> = {
 		"Offline",
 		"Offline",
 		"Çevrimdışı",
-		"ऑफ़लाइन"
+		"ऑफ़लाइन",
+		"Ngoại tuyến"
 	],
 	"After {n} min": [
 		"Nach {n} Min.",
@@ -385,7 +420,8 @@ const TABLE: Record<string, string[]> = {
 		"Após {n} min",
 		"Na {n} min",
 		"{n} dk sonra",
-		"{n} मिनट बाद"
+		"{n} मिनट बाद",
+		"Sau {n} phút"
 	],
 	"{n} min": [
 		"{n} Min.",
@@ -395,7 +431,8 @@ const TABLE: Record<string, string[]> = {
 		"{n} min",
 		"{n} min",
 		"{n} dk",
-		"{n} मिनट"
+		"{n} मिनट",
+		"{n} phút"
 	],
 	"Live app list via Homebrew Channel": [
 		"Live-App-Liste über Homebrew Channel",
@@ -405,7 +442,8 @@ const TABLE: Record<string, string[]> = {
 		"Lista de apps em direto (Homebrew Channel)",
 		"Live app-lijst via Homebrew Channel",
 		"Homebrew Channel ile canlı uygulama listesi",
-		"Homebrew Channel से लाइव ऐप सूची"
+		"Homebrew Channel से लाइव ऐप सूची",
+		"Danh sách ứng dụng trực tiếp qua Homebrew Channel"
 	],
 	"Video wallpaper": [
 		"Video-Hintergrund",
@@ -415,7 +453,8 @@ const TABLE: Record<string, string[]> = {
 		"Papel de parede em vídeo",
 		"Videoachtergrond",
 		"Video duvar kâğıdı",
-		"वीडियो वॉलपेपर"
+		"वीडियो वॉलपेपर",
+		"Hình nền video"
 	],
 	"Show system apps": [
 		"Systemapps anzeigen",
@@ -425,7 +464,8 @@ const TABLE: Record<string, string[]> = {
 		"Mostrar apps do sistema",
 		"Systeem-apps tonen",
 		"Sistem uygulamalarını göster",
-		"सिस्टम ऐप्स दिखाएं"
+		"सिस्टम ऐप्स दिखाएं",
+		"Hiện ứng dụng hệ thống"
 	],
 	"Date and weather": [
 		"Datum und Wetter",
@@ -435,7 +475,8 @@ const TABLE: Record<string, string[]> = {
 		"Data e meteorologia",
 		"Datum en weer",
 		"Tarih ve hava durumu",
-		"तारीख और मौसम"
+		"तारीख और मौसम",
+		"Ngày và thời tiết"
 	],
 	"Weather city": [
 		"Wetter-Ort",
@@ -445,7 +486,8 @@ const TABLE: Record<string, string[]> = {
 		"Cidade do tempo",
 		"Weerstad",
 		"Hava durumu şehri",
-		"मौसम शहर"
+		"मौसम शहर",
+		"Thành phố thời tiết"
 	],
 	"Change wallpaper automatically": [
 		"Hintergrund automatisch wechseln",
@@ -455,7 +497,8 @@ const TABLE: Record<string, string[]> = {
 		"Mudar papel de parede automaticamente",
 		"Achtergrond automatisch wisselen",
 		"Duvar kâğıdını otomatik değiştir",
-		"वॉलपेपर अपने आप बदलें"
+		"वॉलपेपर अपने आप बदलें",
+		"Tự động đổi hình nền"
 	],
 	"Dim the wallpaper": [
 		"Hintergrund abdunkeln",
@@ -465,10 +508,11 @@ const TABLE: Record<string, string[]> = {
 		"Escurecer papel de parede",
 		"Achtergrond dimmen",
 		"Duvar kâğıdını karart",
-		"वॉलपेपर मंद करें"
+		"वॉलपेपर मंद करें",
+		"Làm tối hình nền"
 	],
-	"At night": ["Nachts", "De noche", "La nuit", "Di notte", "À noite", "'s Nachts", "Geceleri", "रात में"],
-	"Wallpaper captions": ["Hintergrund-Beschriftungen", "Rótulos del fondo", "Légendes du fond d'écran", "Didascalie dello sfondo", "Legendas do fundo", "Achtergrondbijschriften", "Duvar kağıdı açıklamaları", "वॉलपेपर कैप्शन"],
+	"At night": ["Nachts", "De noche", "La nuit", "Di notte", "À noite", "'s Nachts", "Geceleri", "रात में", "Ban đêm"],
+	"Wallpaper captions": ["Hintergrund-Beschriftungen", "Rótulos del fondo", "Légendes du fond d'écran", "Didascalie dello sfondo", "Legendas do fundo", "Achtergrondbijschriften", "Duvar kağıdı açıklamaları", "वॉलपेपर कैप्शन", "Chú thích hình nền"],
 	"Dim when the dock is hidden": [
 		"Abdunkeln, wenn das Dock ausgeblendet ist",
 		"Atenuar con el dock oculto",
@@ -477,7 +521,8 @@ const TABLE: Record<string, string[]> = {
 		"Escurecer com o dock oculto",
 		"Dimmen als het dock verborgen is",
 		"Dock gizliyken karart",
-		"डॉक छिपने पर मंद करें"
+		"डॉक छिपने पर मंद करें",
+		"Làm tối khi ẩn thanh dock"
 	],
 	"AM/PM on the clock": [
 		"AM/PM an der Uhr",
@@ -487,7 +532,8 @@ const TABLE: Record<string, string[]> = {
 		"AM/PM no relógio",
 		"AM/PM op de klok",
 		"Saatte AM/PM",
-		"घड़ी में AM/PM"
+		"घड़ी में AM/PM",
+		"AM/PM trên đồng hồ"
 	],
 	"Clock": [
 		"Uhr",
@@ -497,7 +543,8 @@ const TABLE: Record<string, string[]> = {
 		"Relógio",
 		"Klok",
 		"Saat",
-		"घड़ी"
+		"घड़ी",
+		"Đồng hồ"
 	],
 	"Language": [
 		"Sprache",
@@ -507,7 +554,8 @@ const TABLE: Record<string, string[]> = {
 		"Idioma",
 		"Taal",
 		"Dil",
-		"भाषा"
+		"भाषा",
+		"Ngôn ngữ"
 	],
 	"Auto": [
 		"Automatisch",
@@ -517,7 +565,8 @@ const TABLE: Record<string, string[]> = {
 		"Automático",
 		"Automatisch",
 		"Otomatik",
-		"स्वचालित"
+		"स्वचालित",
+		"Tự động"
 	],
 	"12-hour": [
 		"12 Stunden",
@@ -527,7 +576,8 @@ const TABLE: Record<string, string[]> = {
 		"12 horas",
 		"12 uur",
 		"12 saat",
-		"12 घंटे"
+		"12 घंटे",
+		"12 giờ"
 	],
 	"24-hour": [
 		"24 Stunden",
@@ -537,7 +587,8 @@ const TABLE: Record<string, string[]> = {
 		"24 horas",
 		"24 uur",
 		"24 saat",
-		"24 घंटे"
+		"24 घंटे",
+		"24 giờ"
 	],
 	"Clear": [
 		"Klar",
@@ -547,7 +598,8 @@ const TABLE: Record<string, string[]> = {
 		"Limpo",
 		"Helder",
 		"Açık",
-		"साफ"
+		"साफ",
+		"Quang đãng"
 	],
 	"Partly cloudy": [
 		"Teils bewölkt",
@@ -557,7 +609,8 @@ const TABLE: Record<string, string[]> = {
 		"Parcialmente nublado",
 		"Half bewolkt",
 		"Parçalı bulutlu",
-		"आंशिक बादल"
+		"आंशिक बादल",
+		"Có mây rải rác"
 	],
 	"Cloudy": [
 		"Bewölkt",
@@ -567,7 +620,8 @@ const TABLE: Record<string, string[]> = {
 		"Nublado",
 		"Bewolkt",
 		"Bulutlu",
-		"बादल"
+		"बादल",
+		"Nhiều mây"
 	],
 	"Fog": [
 		"Nebel",
@@ -577,7 +631,8 @@ const TABLE: Record<string, string[]> = {
 		"Nevoeiro",
 		"Mist",
 		"Sis",
-		"कोहरा"
+		"कोहरा",
+		"Sương mù"
 	],
 	"Rain": [
 		"Regen",
@@ -587,7 +642,8 @@ const TABLE: Record<string, string[]> = {
 		"Chuva",
 		"Regen",
 		"Yağmur",
-		"बारिश"
+		"बारिश",
+		"Mưa"
 	],
 	"Snow": [
 		"Schnee",
@@ -597,11 +653,12 @@ const TABLE: Record<string, string[]> = {
 		"Neve",
 		"Sneeuw",
 		"Kar",
-		"बर्फ"
+		"बर्फ",
+		"Tuyết"
 	],
-	"High": ["Max.", "Máx.", "Max.", "Max", "Máx.", "Max.", "En yüksek", "अधिकतम"],
-	"Low": ["Min.", "Mín.", "Min.", "Min", "Mín.", "Min.", "En düşük", "न्यूनतम"],
-	"Rain from": ["Regen ab", "Lluvia desde las", "Pluie dès", "Pioggia dalle", "Chuva a partir das", "Regen vanaf", "Yağmur başlangıcı", "बारिश"],
+	"High": ["Max.", "Máx.", "Max.", "Max", "Máx.", "Max.", "En yüksek", "अधिकतम", "Cao"],
+	"Low": ["Min.", "Mín.", "Min.", "Min", "Mín.", "Min.", "En düşük", "न्यूनतम", "Thấp"],
+	"Rain from": ["Regen ab", "Lluvia desde las", "Pluie dès", "Pioggia dalle", "Chuva a partir das", "Regen vanaf", "Yağmur başlangıcı", "बारिश", "Mưa từ"],
 	"Showers": [
 		"Schauer",
 		"Chubascos",
@@ -610,7 +667,8 @@ const TABLE: Record<string, string[]> = {
 		"Aguaceiros",
 		"Buien",
 		"Sağanak",
-		"बौछारें"
+		"बौछारें",
+		"Mưa rào"
 	],
 	"Storm": [
 		"Gewitter",
@@ -620,7 +678,8 @@ const TABLE: Record<string, string[]> = {
 		"Tempestade",
 		"Onweer",
 		"Fırtına",
-		"तूफ़ान"
+		"तूफ़ान",
+		"Dông"
 	],
 	"OK adds or removes an item · Hold OK to re-order · Back returns": [
 		"OK fügt hinzu oder entfernt · OK halten zum Anordnen · Zurück zum Start",
@@ -630,7 +689,8 @@ const TABLE: Record<string, string[]> = {
 		"OK adiciona ou remove · Mantenha OK para reordenar · Voltar regressa ao início",
 		"OK voegt toe of verwijdert · Houd OK ingedrukt om te herschikken · Terug naar start",
 		"OK ekler veya kaldırır · Sıralamak için OK'a basılı tutun · Geri ana ekrana döner",
-		"OK से जोड़ें या हटाएं · क्रम बदलने के लिए OK दबाए रखें · वापस जाने के लिए Back"
+		"OK से जोड़ें या हटाएं · क्रम बदलने के लिए OK दबाए रखें · वापस जाने के लिए Back",
+		"OK để thêm hoặc bỏ · Giữ OK để sắp xếp · Back để quay lại"
 	],
 	"OK picks up an item · Hold OK or choose Done to finish": [
 		"OK nimmt auf · OK halten oder Fertig zum Beenden",
@@ -640,7 +700,8 @@ const TABLE: Record<string, string[]> = {
 		"OK agarra um item · Mantenha OK ou escolha Concluído",
 		"OK pakt een item op · Houd OK ingedrukt of kies Klaar",
 		"OK öğeyi alır · Bitirmek için OK'a basılı tutun veya Bitti'yi seçin",
-		"OK से आइटम उठाएं · खत्म करने के लिए OK दबाए रखें या हो गया चुनें"
+		"OK से आइटम उठाएं · खत्म करने के लिए OK दबाए रखें या हो गया चुनें",
+		"OK để nhấc một mục · Giữ OK hoặc chọn Xong để kết thúc"
 	],
 	"Arrows move it · OK puts it down · Back cancels": [
 		"Pfeile bewegen · OK legt ab · Zurück bricht ab",
@@ -650,8 +711,36 @@ const TABLE: Record<string, string[]> = {
 		"Setas movem · OK pousa · Voltar cancela",
 		"Pijlen verplaatsen · OK zet neer · Terug annuleert",
 		"Oklar taşır · OK bırakır · Geri iptal eder",
-		"तीर खिसकाते हैं · OK छोड़ता है · Back रद्द करता है"
+		"तीर खिसकाते हैं · OK छोड़ता है · Back रद्द करता है",
+		"Mũi tên để di chuyển · OK để đặt xuống · Back để hủy"
 	],
+	// Vietnamese only so far: an empty entry falls back to the English text, as before
+	"Vivid": ["", "", "", "", "", "", "", "", "Sống động"],
+	"Standard": ["", "", "", "", "", "", "", "", "Tiêu chuẩn"],
+	"Eco": ["", "", "", "", "", "", "", "", "Tiết kiệm"],
+	"Cinema": ["", "", "", "", "", "", "", "", "Điện ảnh"],
+	"Sports": ["", "", "", "", "", "", "", "", "Thể thao"],
+	"Game": ["", "", "", "", "", "", "", "", "Trò chơi"],
+	"Expert (bright room)": ["", "", "", "", "", "", "", "", "Chuyên gia (phòng sáng)"],
+	"Expert (dark room)": ["", "", "", "", "", "", "", "", "Chuyên gia (phòng tối)"],
+	"HDR Effect": ["", "", "", "", "", "", "", "", "Hiệu ứng HDR"],
+	"HDR Standard": ["", "", "", "", "", "", "", "", "HDR tiêu chuẩn"],
+	"HDR Cinema": ["", "", "", "", "", "", "", "", "HDR điện ảnh"],
+	"HDR Game": ["", "", "", "", "", "", "", "", "HDR trò chơi"],
+	"Clear Voice": ["", "", "", "", "", "", "", "", "Giọng nói rõ"],
+	"Music": ["", "", "", "", "", "", "", "", "Âm nhạc"],
+	"Game Optimizer": ["", "", "", "", "", "", "", "", "Tối ưu trò chơi"],
+	"Custom": ["", "", "", "", "", "", "", "", "Tùy chỉnh"],
+	"Sound": ["", "", "", "", "", "", "", "", "Âm thanh"],
+	"Theme": ["", "", "", "", "", "", "", "", "Chủ đề"],
+	"Guide": ["", "", "", "", "", "", "", "", "Lịch phát sóng"],
+	"Now and Next": ["", "", "", "", "", "", "", "", "Đang và sắp phát"],
+	"Full guide": ["", "", "", "", "", "", "", "", "Lịch đầy đủ"],
+	"Now": ["", "", "", "", "", "", "", "", "Đang phát"],
+	"Next": ["", "", "", "", "", "", "", "", "Tiếp theo"],
+	"Starts at": ["", "", "", "", "", "", "", "", "Bắt đầu lúc"],
+	"OK saves · Back cancels": ["", "", "", "", "", "", "", "", "OK để lưu · Back để hủy"],
+	"No channels yet. Open Live TV once, then come back.": ["", "", "", "", "", "", "", "", "Chưa có kênh nào. Mở Live TV một lần rồi quay lại."]
 };
 
 let current = 'en';

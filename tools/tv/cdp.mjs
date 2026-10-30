@@ -3,7 +3,7 @@
 //   node tools/tv/cdp.mjs css '<css>'                 replaces the live <style id="live"> block; css '' clears it
 //   node tools/tv/cdp.mjs shot <out.png> [x,y,w,h]    screenshot of the page, or of a clip
 //   node tools/tv/cdp.mjs key down down enter 500 back   presses keys in order; a number waits that many ms
-// The tunnel must be open: ssh -o BatchMode=yes -o ExitOnForwardFailure=yes -f -N -L 19998:127.0.0.1:9998 root@192.168.0.20
+// The tunnel must be open: ssh -o BatchMode=yes -o ExitOnForwardFailure=yes -f -N -L 19998:127.0.0.1:9998 root@192.168.1.63
 import {writeFileSync} from 'node:fs';
 
 const PORT = process.env.LUMEN_CDP_PORT || 19998;
