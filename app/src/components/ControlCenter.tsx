@@ -177,8 +177,8 @@ export function ControlCenter ({onClose, onCloseDown, onError, onAction, darkMod
 	};
 
 	const options = (cell: MenuCell): {value: string; label: string}[] =>
-		cell === 'sound' ? SOUND_MODES.map((m) => ({value: m, label: SOUND_LABEL[m] || m}))
-			: cell === 'picture' ? PICTURE_MODES.map((m) => ({value: m, label: PICTURE_LABEL[m] || m}))
+		cell === 'sound' ? SOUND_MODES.map((m) => ({value: m, label: tr(SOUND_LABEL[m] || m)}))
+			: cell === 'picture' ? PICTURE_MODES.map((m) => ({value: m, label: tr(PICTURE_LABEL[m] || m)}))
 				: cell === 'dark' ? [{value: 'off', label: tr('Light')}, {value: 'on', label: tr('Dark')}, {value: 'auto', label: tr('Auto')}]
 					: [{value: 'auto', label: tr('Auto')}, {value: '12h', label: tr('12-hour')}, {value: '24h', label: tr('24-hour')}];
 	const chosen = (cell: MenuCell): string => {
@@ -357,8 +357,8 @@ export function ControlCenter ({onClose, onCloseDown, onError, onAction, darkMod
 
 	/** What a list tile shows: icon, name, current choice, and whether it shows as on. */
 	const info = (cell: MenuCell): {glyph: GlyphName; title: string; sub: string; on: boolean} =>
-		cell === 'sound' ? {glyph: 'speaker', title: tr('Sound'), sub: SOUND_LABEL[values.sound] || values.sound, on: false}
-			: cell === 'picture' ? {glyph: 'picture', title: tr('Picture'), sub: PICTURE_LABEL[values.picture] || values.picture, on: false}
+		cell === 'sound' ? {glyph: 'speaker', title: tr('Sound'), sub: tr(SOUND_LABEL[values.sound] || values.sound), on: false}
+			: cell === 'picture' ? {glyph: 'picture', title: tr('Picture'), sub: tr(PICTURE_LABEL[values.picture] || values.picture), on: false}
 				: cell === 'dark' ? {glyph: 'screensaver', title: tr('Theme'), sub: darkMode === 'on' ? tr('Dark') : darkMode === 'auto' ? tr('Auto') : tr('Light'), on: darkMode === 'on'}
 					: {glyph: 'timer', title: tr('Clock'), sub: clockFormat === '12h' ? tr('12-hour') : clockFormat === '24h' ? tr('24-hour') : tr('Auto'), on: clockFormat !== 'auto'};
 	const tileInside = (i: {glyph: GlyphName; title: string; sub: string}) => [
